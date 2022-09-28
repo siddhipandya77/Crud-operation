@@ -44,9 +44,9 @@ public class BooksRepositoryTest {
 	    @Test
 	    public void getAllBooksTest(){
 
-	        List<Books> employees = (List<Books>) booksRepository.findAll();
+	        List<Books> bookList = (List<Books>) booksRepository.findAll();
 
-	        Assertions.assertThat(employees.size()).isGreaterThan(0);
+	        Assertions.assertThat(bookList.size()).isGreaterThan(0);
 
 	    }
 	    
