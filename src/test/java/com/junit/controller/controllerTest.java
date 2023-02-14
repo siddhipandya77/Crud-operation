@@ -107,7 +107,6 @@ public class controllerTest {
 	
 	@Test
 	public void getAllBooksTest() throws Exception {
-//		when(booksService.getAllBooks().thenReturn(list);
 		MvcResult mvcResult = mockMvc
 				.perform(get("/getAllBooks"))
 				.andExpect(status().isOk()).andReturn();
