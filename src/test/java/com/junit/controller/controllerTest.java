@@ -17,6 +17,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -107,12 +108,16 @@ public class controllerTest {
 	
 	@Test
 	public void getAllBooksTest() throws Exception {
-//		when(booksService.getAllBooks().thenReturn(list);
+		when(booksService.getAllBooks()).thenReturn(list);
 		MvcResult mvcResult = mockMvc
 				.perform(get("/getAllBooks"))
 				.andExpect(status().isOk()).andReturn();
 		int status=mvcResult.getResponse().getStatus();
 		assertEquals(200, status);
+		String expectedOutput = mvcResult.getResponse().getContentAsString();
+		JSONAssert.assertEquals(expectedOutput,"\r\n"
+				+ "[{\"bookid\":11,\"bookname\":\"cccc\",\"author\":\"ddd\",\"price\":100},{\"bookid\":12,\"bookname\":\"fff\",\"author\":\"eeee\",\"price\":100}]" ,true);
+		
 	}
 	
 	public Books getBook()
