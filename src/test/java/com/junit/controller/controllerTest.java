@@ -107,7 +107,7 @@ public class controllerTest {
 	
 	@Test
 	public void getAllBooksTest() throws Exception {
-		when(booksService.update(Mockito.any(Books.class),Mockito.anyInt())).thenReturn(book);
+//		when(booksService.getAllBooks().thenReturn(list);
 		MvcResult mvcResult = mockMvc
 				.perform(get("/getAllBooks"))
 				.andExpect(status().isOk()).andReturn();
